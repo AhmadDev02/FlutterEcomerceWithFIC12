@@ -22,23 +22,27 @@ class ProductController extends Controller
         return view('pages.product.create', compact('categories'));
     }
 
-    //store
     public function store(Request $request)
-    {
+{
+    if ($request->hasFile('image')) {
         $filename = time() . '.' . $request->image->extension();
         $request->image->storeAs('public/products', $filename);
-        // $data = $request->all();
-
-        $product = new \App\Models\Product;
-        $product->name = $request->name;
-        $product->price = (int) $request->price;
-        $product->stock = (int) $request->stock;
-        $product->category_id = $request->category_id;
-        $product->image = $filename;
-        $product->save();
-
-        return redirect()->route('product.index');
+    } else {
+        // Handle the case where no image was uploaded.
+        // You might want to set a default image or return an error.
+        $filename = 'default.jpg';
     }
+
+    $product = new \App\Models\Product;
+    $product->name = $request->name;
+    $product->price = (int) $request->price;
+    $product->stock = (int) $request->stock;
+    $product->category_id = $request->category_id;
+    $product->image = $filename;
+    $product->save();
+
+    return redirect()->route('product.index')->with('success', 'Product successfully');
+}
 
     //edit
     public function edit($id)
