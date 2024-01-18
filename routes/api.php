@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// register
+// register halaman
 Route::post('/register', [App\Http\Controllers\Api\AuthController::class, 'register']);
 //logout
 Route::post('/logout', [App\Http\Controllers\Api\AuthController::class, 'logout'])->middleware('auth:sanctum');
