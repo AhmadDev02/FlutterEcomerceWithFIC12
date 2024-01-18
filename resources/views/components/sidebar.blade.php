@@ -4,7 +4,7 @@
             <a href="index.html">Online Shop AHMADDEV02</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
+            <a href="index.html">AHM</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
